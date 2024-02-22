@@ -10,6 +10,6 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends MongoRepository<UserModel,String> {
-    @Query(value = "db.users.findOne({email:userEmail})")
-    Optional<UserModel> findByEmail(@Param("userEmail")String userEmail);
+    @Query("{email:?0}")
+    Optional<UserModel> findByEmail(String userEmail);
 }

@@ -30,6 +30,5 @@ public class UserServiceImpl {
         }else{
             throw new UserAlreadyExistException("User Already Exist");
         }
-
     }
 }

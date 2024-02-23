@@ -1,6 +1,7 @@
 package com.example.demo.user.service;
 
 import com.example.demo.user.entity.UserModel;
+import com.example.demo.user.exception.NoUserExistException;
 import com.example.demo.user.exception.UserAlreadyExistException;
 import com.example.demo.user.middleware.PasswordEncoder;
 import com.example.demo.user.respository.UserRepository;
@@ -29,6 +30,17 @@ public class UserServiceImpl {
             return userRepository.save(user);
         }else{
             throw new UserAlreadyExistException("User Already Exist");
+        }
+    }
+    public Optional<UserModel> getById(String id){
+        return userRepository.findById(id);
+    }
+    public String deleteUser(String id){
+        if(userRepository.findById(id).isPresent()){
+            userRepository.delete(userRepository.findById(id).get());
+            return "User Deleted Successfully";
+        }else{
+            throw new NoUserExistException("No Such User Exist");
         }
     }
 }

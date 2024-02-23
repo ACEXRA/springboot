@@ -1,7 +1,8 @@
 package com.example.demo.user.controller;
 
+import ch.qos.logback.core.helpers.NOPAppender;
 import com.example.demo.user.entity.UserModel;
-import com.example.demo.user.service.UserService;
+import com.example.demo.user.exception.NoUserExistException;
 import com.example.demo.user.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,5 +23,13 @@ public class UserControllerImpl implements UserController{
     @PostMapping("/register")
     public UserModel registerUser(@RequestBody UserModel user){
         return userService.registerUser(user);
+    }
+    @GetMapping("/{id}")
+    public Optional<UserModel> getById(@PathVariable(value = "id") String id){
+        return userService.getById(id);
+    }
+    @DeleteMapping("/{id}")
+    public String deleteUser(@PathVariable(value = "id")String id) {
+        return userService.deleteUser(id);
     }
 }

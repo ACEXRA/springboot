@@ -43,4 +43,19 @@ public class UserServiceImpl {
             throw new NoUserExistException("No Such User Exist");
         }
     }
+    public UserModel updateUser(UserModel user){
+        System.out.println(user.getId());
+        Optional<UserModel> check=userRepository.findById(user.getId());
+        if(check!=null){
+            UserModel existingUser=check.get();
+            existingUser.setEmail(user.getEmail());
+            existingUser.setName(user.getName());
+            existingUser.setPassword(userHelper.passwordHash(user.getPassword()));
+            existingUser.setRole(user.getRole());
+            return userRepository.save(existingUser);
+
+        }else{
+            throw new NoUserExistException("No User present");
+        }
+    }
 }

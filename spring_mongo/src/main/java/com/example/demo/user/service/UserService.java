@@ -10,4 +10,5 @@ public interface UserService {
     public UserModel registerUser(UserModel a);
     public Optional<UserModel> getById(String id);
     public String deleteUser(String id);
+    public UserModel updateUser(UserModel user);
 }

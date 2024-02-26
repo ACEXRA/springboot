@@ -32,4 +32,8 @@ public class UserControllerImpl implements UserController{
     public String deleteUser(@PathVariable(value = "id")String id) {
         return userService.deleteUser(id);
     }
+    @PutMapping("/update")
+    public UserModel updateUser(@RequestBody UserModel user){
+        return userService.updateUser(user);
+    }
 }

@@ -12,4 +12,5 @@ public interface UserController {
     public UserModel registerUser(UserModel user);
     public Optional<UserModel> getById(String id);
     public String deleteUser(String id);
+    public UserModel updateUser(UserModel user);
 }

@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthControllerImpl implements AuthController{
     @Autowired
     private AuthServiceImpl authService;
+    @GetMapping("/welcome")
+    public String welcome(){
+        return "welcome";
+    }
     @GetMapping("/signin")
     public String signIn(){
         return authService.signIn();

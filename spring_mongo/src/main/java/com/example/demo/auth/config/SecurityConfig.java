@@ -10,10 +10,10 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 @EnableMethodSecurity
 public class SecurityConfig {
 
-    pubic SecurityFilterChain SecurityConfig(HttpSecurity http) throws Exception{
-        return http
-//                .authorizeHttpRequests()
-                .requestMatchers("/auth/welcome");
-
-    }
+//    pubic SecurityFilterChain SecurityConfig(HttpSecurity http) throws Exception{
+//        return http
+////                .authorizeHttpRequests()
+//                .requestMatchers("/auth/welcome");
+//
+//    }
 }
